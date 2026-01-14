@@ -35,6 +35,7 @@ BIP will evaluate your startup and generate a founder style social media strateg
 
 ![Design image](IMG_8297.jpg)
 
+```mermaid
 sequenceDiagram
     actor Founder
     participant UI as React App (Browser)
@@ -79,6 +80,7 @@ sequenceDiagram
     API->>DB: Update status=posted
     API-->>WS: Push status update (posted)
     WS-->>UI: "Posted successfully"
+```
 
 
 ### Key features
