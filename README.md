@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+A one-stop-shop to manage social media accounts for founders creating "build-in-public" content from content planning to posting to multiple platforms.
 
 > [!NOTE]
 > This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
@@ -17,15 +17,19 @@ A brief description of the application here. Lorem ipsum dolor sit amet, consect
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
+- [x] Proper use of Markdown
+- [x] A concise and compelling elevator pitch
+- [x] Description of key features
+- [x] Description of how you will use each technology
 - [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+BIP (build in public) automates the content creation work for startup founders. Are you a startup founder who wants to post your journey of building your company on top of the regular startup tasks you are doing? Do you ever stuggle with coming up with video ideas and hate the redundent and time consuming process of editing and posting your content? Is hiring a personal social media manager too expensive? 
+
+BIP is your solution!
+
+BIP will evaluate your startup and generate a founder style social media strategy. Everyday, it will tell you what shots you need to film, what to say. All you need to do is film the shots asked by BIP and BIP takes care of the editing, posting, and reusing your content. 
 
 ### Design
 
@@ -42,20 +46,50 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Social Media Strategy Decision: An AI agent that chats with the user when they sign up to choose the best social media strategy
+- Schedule Input and Shot List: Everyday, an AI agent looks at the user's schedule, and decide what shots are needed to create the vlog
+- AI editing and Posting: Once the user uploads the footage, an AI agent will edit the video and post it to the user's social media accounts
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** -
+The application uses semantic HTML to define the structure of two main pages:
+
+a public authentication page, and
+
+an authenticated dashboard page.
+
+HTML elements such as chat interface, buttons, lists, and media containers are used to support user authentication, onboarding, daily shot lists, and video uploads. Each page provides a clear structural layout, while detailed functionality is handled by React components.
+- **CSS** - 
+CSS is used to style both pages, giving them a clean, creator-centered look that works on screens of all sizes. Flexbox and Grid are used to handle layout so that the spacing and alignment of all the components is the same. CSS transitions and animations are used for things that users can interact with, like loading indicators, real-time status updates, and UI feedback while files are being uploaded and processed.
+- **React** - 
+Implement the application as a single-page application with two routes:
+
+a public authentication route, and
+
+a protected dashboard route.
+
+Each route renders multiple reusable components, including login/register forms, onboarding chat, strategy overview, daily shot list, upload interface, and status notifications. React state and effects manage user interactions, authentication state, and dynamic updates from backend and WebSocket events. Routing ensures users can only access the dashboard after authentication.
+- **Service** -
+The backend provides multiple REST endpoints that support the two-page application flow and core functionality, including:
+
+Registering, logging in, and logging out users
+
+Handling onboarding conversations and storing strategy preferences
+
+Retrieving daily shot lists for authenticated users
+
+Accepting uploaded video metadata and tracking processing state
+
+Returning posting and editing status updates
+
+The backend also makes at least one third-party API call, such as calling an external AI or media-related service to generate content ideas or assist with video processing. Authentication is required for all dashboard-related endpoints.
+- **DB/Login** - 
+A database is used to persist application data across sessions. Stored data includes user authentication information, startup profiles, social media strategies, daily shot lists, and uploaded content metadata. This data is retrieved by the backend and rendered on the dashboard page, allowing users to view their strategy and daily filming tasks after logging in.
+- **WebSocket** - 
+WebSockets are used to deliver real-time updates from the backend to the dashboard page. Examples include live notifications when video processing starts or finishes, when content is successfully posted, or when errors occur. These updates are pushed from the server and immediately rendered by React without requiring page refreshes.
 
 ## 🚀 AWS deliverable
 
