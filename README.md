@@ -33,7 +33,7 @@ BIP will evaluate your startup and generate a founder style social media strateg
 
 ### Design
 
-![Design image](IMG_8297.JEPG)
+![Design image](IMG_8297.jpg)
 
 ```mermaid
 sequenceDiagram
