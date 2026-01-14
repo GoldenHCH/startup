@@ -35,12 +35,51 @@ BIP will evaluate your startup and generate a founder style social media strateg
 
 ![Design image](IMG_8297.jpg)
 
-```mermaid
 sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
+    actor Founder
+    participant UI as React App (Browser)
+    participant API as Backend Service (REST)
+    participant DB as Database
+    participant AI as 3rd-Party API
+    participant WS as WebSocket Server
+
+    Founder->>UI: Sign in / Register
+    UI->>API: POST /auth/login (or /auth/register)
+    API->>DB: Verify/create user
+    DB-->>API: User record + auth result
+    API-->>UI: JWT/session token
+
+    Founder->>UI: Open Dashboard
+    UI->>API: GET /strategy (auth)
+    API->>DB: Fetch stored strategy/profile
+    DB-->>API: Strategy/profile
+    API-->>UI: Strategy/profile
+
+    UI->>API: GET /daily-shotlist (auth)
+    API->>DB: Fetch schedule + preferences
+    DB-->>API: Schedule/preferences
+    API->>AI: Generate shot list suggestions
+    AI-->>API: Shot list
+    API->>DB: Save shot list
+    API-->>UI: Shot list
+
+    UI->>WS: Connect (auth)
+    Founder->>UI: Upload footage
+    UI->>API: POST /uploads (metadata)
+    API->>DB: Save upload record (status=queued)
+    API-->>UI: Upload accepted
+
+    API->>AI: Request "edit/post" processing
+    AI-->>API: Processing started
+    API->>DB: Update status=editing
+    API-->>WS: Push status update (editing)
+    WS-->>UI: "Editing video..."
+
+    AI-->>API: Processing done + post result
+    API->>DB: Update status=posted
+    API-->>WS: Push status update (posted)
+    WS-->>UI: "Posted successfully"
+
 
 ### Key features
 
