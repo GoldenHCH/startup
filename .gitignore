@@ -1,0 +1,6 @@
+.pem
+.venv
+.env
+.claude
+.DS_Store
+cursor
